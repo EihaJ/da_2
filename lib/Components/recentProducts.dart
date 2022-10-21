@@ -1,4 +1,4 @@
-gitimport 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Pages/Product/ProductDetails.dart';
 
@@ -15,7 +15,19 @@ class RecentProductsDisplay extends StatelessWidget {
   final double oldPrice;
   final bool sale;
   final String description;
-  RecentProductsDisplay({this.id, this.images, this.colors, this.sizes, this.name, this.price, this.image, this.oldPrice, this.sale, this.description, this.category, this.brand});
+  RecentProductsDisplay(
+      {this.id,
+      this.images,
+      this.colors,
+      this.sizes,
+      this.name,
+      this.price,
+      this.image,
+      this.oldPrice,
+      this.sale,
+      this.description,
+      this.category,
+      this.brand});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,10 +38,22 @@ class RecentProductsDisplay extends StatelessWidget {
         children: <Widget>[
           Card(
             child: InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                    ProductDetails(id: id, name: name, sizes: sizes, colors: colors, price: price,
-                      images: images, description: description, brand: brand,category: category, isFavourite: false,)));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProductDetails(
+                              id: id,
+                              name: name,
+                              sizes: sizes,
+                              colors: colors,
+                              price: price,
+                              images: images,
+                              description: description,
+                              brand: brand,
+                              category: category,
+                              isFavourite: false,
+                            )));
               },
               child: ListTile(
                 leading: Image.network(
@@ -41,9 +65,24 @@ class RecentProductsDisplay extends StatelessWidget {
                 title: RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(text: "$name\n", style: TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold)),
-                      TextSpan(text: "Released by: $brand\n", style: TextStyle(color: Colors.grey, fontSize:  17.0, fontWeight: FontWeight.bold)),
-                      TextSpan(text: "\$$price", style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold))
+                      TextSpan(
+                          text: "$name\n",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: "Released by: $brand\n",
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: "\$$price",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold))
                     ],
                   ),
                 ),
@@ -52,8 +91,7 @@ class RecentProductsDisplay extends StatelessWidget {
                   child: Card(
                     elevation: 10,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
+                        borderRadius: BorderRadius.circular(20)),
                   ),
                 ),
               ),
@@ -64,5 +102,3 @@ class RecentProductsDisplay extends StatelessWidget {
     );
   }
 }
-
-
