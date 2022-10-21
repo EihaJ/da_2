@@ -8,6 +8,7 @@ import 'package:uuid/uuid.dart';
 import '../../db/carts.dart';
 import '../Product/rating_comments.dart';
 import 'package:badges/badges.dart';
+import '../Cart/CartPage.dart';
 
 class ProductDetails extends StatefulWidget {
   final String id;
