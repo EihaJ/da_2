@@ -2,11 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../Components/paymentMethod.dart';
+import '../Order/myorder.dart';
 import 'package:uuid/uuid.dart';
 
 class CheckOutPage extends StatefulWidget {
   final String email;
-  CheckOutPage({Key key, @required this.email}) : super(key:key);
+  CheckOutPage({Key key, @required this.email}) : super(key: key);
 
   @override
   _CheckOutPageState createState() => _CheckOutPageState();
@@ -51,23 +52,33 @@ class _CheckOutPageState extends State<CheckOutPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text("Your address", style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 20.0),),
+                Text(
+                  "Your address",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                ),
                 Text(_nameController.text, style: TextStyle(fontSize: 18.0)),
                 Text(_phoneController.text, style: TextStyle(fontSize: 18.0)),
                 Text(_addressController.text, style: TextStyle(fontSize: 18.0)),
-                SizedBox(height: 10,),
-                Text("Your payment method", style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 20.0)),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Your payment method",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
                 choseMethod
-                    ? Text(
-                    selectedPayment.name, style: TextStyle(fontSize: 18.0))
+                    ? Text(selectedPayment.name,
+                        style: TextStyle(fontSize: 18.0))
                     : Text(""),
-                SizedBox(height: 10,),
-                Text("Your cart", style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 20.0)),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Your cart",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
                 StreamBuilder(
-                    stream: FirebaseFirestore.instance.collection("carts").snapshots(),
+                    stream: FirebaseFirestore.instance
+                        .collection("carts")
+                        .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Text("No products in cart yet!");
@@ -81,13 +92,17 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           ),
                         );
                       }
-                    }
+                    }),
+                SizedBox(
+                  height: 10,
                 ),
-                SizedBox(height: 10,),
-                Text("Total cost", style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text("Total cost",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
                 StreamBuilder(
-                    stream: FirebaseFirestore.instance.collection("carts").snapshots(),
+                    stream: FirebaseFirestore.instance
+                        .collection("carts")
+                        .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Text("0");
@@ -101,8 +116,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           ),
                         );
                       }
-                    }
-                ),
+                    }),
               ],
             ),
           ),
@@ -114,16 +128,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
   List<Widget> createRadioListPayments() {
     List<Widget> widgets = [];
     for (Payment payment in payments) {
-      widgets.add(
-          RadioListTile(
-            value: payment,
-            groupValue: selectedPayment,
-            title: Text(payment.name),
-            onChanged: (Payment currentPayment) {
-              setSelectedMethod(currentPayment);
-            },
-            selected: selectedPayment == payment,
-          ));
+      widgets.add(RadioListTile(
+        value: payment,
+        groupValue: selectedPayment,
+        title: Text(payment.name),
+        onChanged: (Payment currentPayment) {
+          setSelectedMethod(currentPayment);
+        },
+        selected: selectedPayment == payment,
+      ));
     }
     return widgets;
   }
@@ -181,8 +194,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
   bool complete = false;
 
   next() {
-    currentStep + 1 != steps.length ? goTo(currentStep + 1) : setState(() =>
-    complete = true);
+    currentStep + 1 != steps.length
+        ? goTo(currentStep + 1)
+        : setState(() => complete = true);
   }
 
   cancel() {
@@ -204,79 +218,88 @@ class _CheckOutPageState extends State<CheckOutPage> {
         backgroundColor: Colors.white,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("Check your order", style: TextStyle(
-            color: Colors.deepOrange,
-            fontSize: 20.0,
-            fontWeight: FontWeight.w800),),
+        title: Text(
+          "Check your order",
+          style: TextStyle(
+              color: Colors.deepOrange,
+              fontSize: 20.0,
+              fontWeight: FontWeight.w800),
+        ),
         leading: Padding(
             padding: const EdgeInsets.all(4.0),
             child: IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.deepOrange,),
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.deepOrange,
+                ),
                 onPressed: () {
                   Navigator.pop(context);
-                })
-        ),
+                })),
       ),
       body: Column(
         children: <Widget>[
-          complete ? Expanded(
-            child: Center(
-              child: AlertDialog(
-                content: Text("Are you sure to buy these goods?"),
-                actions: <Widget>[
-                  TextButton(
-                    child: Text("Yes"),
-                    onPressed: () {
-                      setState(() {
-                        complete = false;
-                        addOrder();
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyOrder(email: widget.email)));
-                      });
-                    },
+          complete
+              ? Expanded(
+                  child: Center(
+                    child: AlertDialog(
+                      content: Text("Are you sure to buy these goods?"),
+                      actions: <Widget>[
+                        TextButton(
+                          child: Text("Yes"),
+                          onPressed: () {
+                            setState(() {
+                              complete = false;
+                              addOrder();
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          MyOrder(email: widget.email)));
+                            });
+                          },
+                        ),
+                        TextButton(
+                          child: Text("No"),
+                          onPressed: () {
+                            setState(() {
+                              complete = false;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                  TextButton(
-                    child: Text("No"),
-                    onPressed: () {
-                      setState(() {
-                        complete = false;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-          )
-              : Expanded(
-            child: Stepper(
-              steps: steps = [
-                Step(
-                  title: Text("Your information"),
-                  isActive: true,
-                  state: StepState.complete,
-                  content: getNameController(),
-                ),
-                Step(
-                    title: Text("Payment method"),
-                    isActive: false,
-                    state: StepState.complete,
-                    content: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: createRadioListPayments(),
-                    )
-                ),
-                Step(
-                  title: Text("Confirm your cart"),
-                  isActive: false,
-                  state: StepState.complete,
-                  content: confirmOrder(),
                 )
-              ],
-              currentStep: currentStep,
-              onStepContinue: next,
-              onStepCancel: cancel,
-              onStepTapped: (step) => goTo(step),
-            ),
-          )
+              : Expanded(
+                  child: Stepper(
+                    steps: steps = [
+                      Step(
+                        title: Text("Your information"),
+                        isActive: true,
+                        state: StepState.complete,
+                        content: getNameController(),
+                      ),
+                      Step(
+                          title: Text("Payment method"),
+                          isActive: false,
+                          state: StepState.complete,
+                          content: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: createRadioListPayments(),
+                          )),
+                      Step(
+                        title: Text("Confirm your cart"),
+                        isActive: false,
+                        state: StepState.complete,
+                        content: confirmOrder(),
+                      )
+                    ],
+                    currentStep: currentStep,
+                    onStepContinue: next,
+                    onStepCancel: cancel,
+                    onStepTapped: (step) => goTo(step),
+                  ),
+                )
         ],
       ),
     );
@@ -308,9 +331,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 children: <Widget>[
                   Text(doc["products"]["productPrice"].toString(),
                       style: TextStyle(fontSize: 20.0)),
-                  SizedBox(width: 5,),
+                  SizedBox(
+                    width: 5,
+                  ),
                   Text("x", style: TextStyle(fontSize: 18.0)),
-                  SizedBox(width: 5,),
+                  SizedBox(
+                    width: 5,
+                  ),
                   Text(doc["products"]["productQuantity"].toString(),
                       style: TextStyle(fontSize: 20.0))
                 ],
@@ -353,7 +380,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
       width: 40,
       child: ListTile(
         title: Text(
-          "\$$cost", style: TextStyle(color: Colors.black, fontSize: 18.0),),
+          "\$$cost",
+          style: TextStyle(color: Colors.black, fontSize: 18.0),
+        ),
       ),
     );
   }
@@ -362,26 +391,25 @@ class _CheckOutPageState extends State<CheckOutPage> {
     var time = DateTime.now();
     FirebaseFirestore.instance.collection("orders").doc(orderId.v1()).set({
       "orderId": orderId.v1(),
-      "informationPersonal":
-      {
+      "informationPersonal": {
         "email": widget.email,
         "name": _nameController.text,
         "phone": _phoneController.text,
         "address": _addressController.text,
         "paymentMethod": selectedPayment.name
       },
-      "products": order.map((DocumentSnapshot doc) =>
-      {
-        "name": doc["products"]["productName"],
-        "price": doc["products"]["productPrice"],
-        "quantity": doc["products"]["productQuantity"],
-        "size": doc["products"]["productSize"],
-        "cost": doc["products"]["productCost"],
-        "color": doc["products"]["productColor"],
-        "image": doc["products"]["productImage"],
-        "brand": doc["products"]["productBrand"]
-      }
-      ).toList(),
+      "products": order
+          .map((DocumentSnapshot doc) => {
+                "name": doc["products"]["productName"],
+                "price": doc["products"]["productPrice"],
+                "quantity": doc["products"]["productQuantity"],
+                "size": doc["products"]["productSize"],
+                "cost": doc["products"]["productCost"],
+                "color": doc["products"]["productColor"],
+                "image": doc["products"]["productImage"],
+                "brand": doc["products"]["productBrand"]
+              })
+          .toList(),
       "status": false,
       "time": time
     });
