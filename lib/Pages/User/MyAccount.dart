@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Cart/CartPage.dart';
 
 class MyAccount extends StatefulWidget {
   final String email;
@@ -19,7 +20,7 @@ class _MyAccountState extends State<MyAccount> {
           IconButton(
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
-                //Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage(user: widget.email,)));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage(email: widget.email,)));
               }),
         ],
       ),
