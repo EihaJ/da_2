@@ -264,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
                                 30.0, 15.0, 30.0, 0.0),
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                              color: Colors.red,
+                              color: Colors.blue,
                               elevation: 0.0,
                               child: MaterialButton(
                                 onPressed: () async {
@@ -489,7 +489,7 @@ class _LoginPageState extends State<LoginPage> {
                                 30.0, 15.0, 30.0, 0.0),
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                              color: Colors.red,
+                              color: Colors.blue,
                               elevation: 0.0,
                               child: MaterialButton(
                                 onPressed: () async {
@@ -938,7 +938,7 @@ class _LoginPageState extends State<LoginPage> {
                                 30.0, 30.0, 30.0, 0.0),
                             child: Material(
                               borderRadius: BorderRadius.circular(20.0),
-                              color: Colors.red,
+                              color: Colors.blue,
                               elevation: 0.0,
                               child: MaterialButton(
                                 onPressed: () async {

@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:avataaar_image_2/avataaar_image_2.dart';
 import 'package:carousel_pro/carousel_pro.dart';
@@ -107,7 +105,7 @@ class _HomeState extends State<HomePage> {
               iconTheme: IconThemeData(color: Colors.deepOrange),
               elevation: 0.0,
               title: Text(
-                "H M T",
+                "Le Livre",
                 style: TextStyle(color: Colors.deepOrange, fontSize: 18.0),
               ),
               centerTitle: true,
