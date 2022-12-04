@@ -76,12 +76,15 @@ class _LoginPageState extends State<LoginPage> {
           textColor: Colors.white,
           fontSize: 16.0);
 
+      // ignore: use_build_context_synchronously
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomePage(
-                    user: user,
-                  )));
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(
+            user: user,
+          ),
+        ),
+      );
 
       return user;
     } on PlatformException catch (e) {
