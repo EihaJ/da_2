@@ -221,7 +221,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
         title: Text(
           "Check your order",
           style: TextStyle(
-              color: Colors.deepOrange,
+              color: Colors.blueAccent,
               fontSize: 20.0,
               fontWeight: FontWeight.w800),
         ),
@@ -230,7 +230,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
             child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios,
-                  color: Colors.deepOrange,
+                  color: Colors.blueAccent,
                 ),
                 onPressed: () {
                   Navigator.pop(context);

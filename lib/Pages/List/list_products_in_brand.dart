@@ -14,9 +14,9 @@ class _ListProductsInBrandState extends State<ListProductsInBrand> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.deepOrange),
+        iconTheme: IconThemeData(color: Colors.blueAccent),
         elevation: 0.0,
-        title: Text("List of Products", style: TextStyle(color:Colors.deepOrange, fontSize: 18.0),),
+        title: Text("List of Products", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0),),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),

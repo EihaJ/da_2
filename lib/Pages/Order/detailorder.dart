@@ -32,10 +32,10 @@ class _DetailOrderState extends State<DetailOrder> {
         backgroundColor: Colors.white,
         elevation: 0.0,
         centerTitle: true,
-        title: Text("Detail Order", style: TextStyle(color: Colors.deepOrange, fontSize: 20.0, fontWeight: FontWeight.w800),),
+        title: Text("Detail Order", style: TextStyle(color: Colors.blueAccent, fontSize: 20.0, fontWeight: FontWeight.w800),),
         leading: Padding(
             padding: const EdgeInsets.all(4.0),
-            child: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.deepOrange,), onPressed: (){
+            child: IconButton(icon: Icon(Icons.arrow_back_ios, color: Colors.blueAccent,), onPressed: (){
               Navigator.pop(context);
             })
         ),

@@ -40,7 +40,7 @@ class _MyOrderState extends State<MyOrder> {
                   IconButton(
                       icon: Icon(
                         Icons.arrow_back_ios,
-                        color: Colors.deepOrange,
+                        color: Colors.blueAccent,
                       ),
                       onPressed: () {
                         Navigator.pop(context);
@@ -48,7 +48,7 @@ class _MyOrderState extends State<MyOrder> {
                   Text(
                     "My Order",
                     style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Colors.blueAccent,
                         fontSize: 20.0,
                         fontWeight: FontWeight.w800),
                   ),

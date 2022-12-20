@@ -3,7 +3,6 @@ import '../Components/FeaturedCard.dart';
 import '../db/product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class SaleProducts extends StatefulWidget {
   @override
   _SaleProductsState createState() => _SaleProductsState();
@@ -18,6 +17,7 @@ class _SaleProductsState extends State<SaleProducts> {
     super.initState();
     _getProducts();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +25,7 @@ class _SaleProductsState extends State<SaleProducts> {
       child: ListView(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
-          children: getProductFeatured().map((DocumentSnapshot document){
+          children: getProductFeatured().map((DocumentSnapshot document) {
             return FeaturedCard(
               id: document["id"],
               name: document["name"],
@@ -40,20 +40,21 @@ class _SaleProductsState extends State<SaleProducts> {
               sale: document["onSale"],
               description: document["description"],
             );
-          }).toList()
-      ),
+          }).toList()),
     );
   }
-  void _getProducts() async{
+
+  void _getProducts() async {
     List<DocumentSnapshot> data2 = await _productServices.getProducts();
     setState(() {
       _products = data2;
     });
   }
-  List<DocumentSnapshot> getProductFeatured(){
+
+  List<DocumentSnapshot> getProductFeatured() {
     List<DocumentSnapshot> items = new List();
-    _products.map((DocumentSnapshot document){
-      if(document["onSale"] == true){
+    _products.map((DocumentSnapshot document) {
+      if (document["onSale"] == true) {
         setState(() {
           items.add(document);
         });
@@ -62,4 +63,3 @@ class _SaleProductsState extends State<SaleProducts> {
     return items;
   }
 }
-

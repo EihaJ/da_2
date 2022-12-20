@@ -28,7 +28,7 @@ class _CommentPageState extends State<CommentPage> {
         title: Text(
           "Comments",
           style: TextStyle(
-              color: Colors.deepOrange,
+              color: Colors.blueAccent,
               fontSize: 20.0,
               fontWeight: FontWeight.w800),
         ),
@@ -37,7 +37,7 @@ class _CommentPageState extends State<CommentPage> {
             child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios,
-                  color: Colors.deepOrange,
+                  color: Colors.blueAccent,
                 ),
                 onPressed: () {
                   Navigator.pop(context);

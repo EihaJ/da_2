@@ -102,11 +102,11 @@ class _HomeState extends State<HomePage> {
         if (constraints.maxWidth < 350) {
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
               title: Text(
                 "Le Livre",
-                style: TextStyle(color: Colors.deepOrange, fontSize: 18.0),
+                style: TextStyle(color: Colors.blueAccent, fontSize: 18.0),
               ),
               centerTitle: true,
               backgroundColor: Colors.white,
@@ -179,7 +179,7 @@ class _HomeState extends State<HomePage> {
                           decoration: InputDecoration(
                             icon: Icon(
                               Icons.search,
-                              color: Colors.deepOrange,
+                              color: Colors.blueAccent,
                             ),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
@@ -198,7 +198,7 @@ class _HomeState extends State<HomePage> {
                       'Categories',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -226,7 +226,7 @@ class _HomeState extends State<HomePage> {
                       'Brands',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -257,7 +257,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Featured products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -274,7 +274,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Sale products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -289,7 +289,7 @@ class _HomeState extends State<HomePage> {
                       style: TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.blueAccent),
                     ),
                   ),
                   RecentProducts(),
@@ -407,11 +407,11 @@ class _HomeState extends State<HomePage> {
         } else if (constraints.maxWidth > 351 && constraints.maxWidth < 410) {
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
               title: Text(
-                "H M T",
-                style: TextStyle(color: Colors.deepOrange, fontSize: 18.0),
+                "Le",
+                style: TextStyle(color: Colors.blueAccent, fontSize: 18.0),
               ),
               centerTitle: true,
               backgroundColor: Colors.white,
@@ -484,7 +484,7 @@ class _HomeState extends State<HomePage> {
                           decoration: InputDecoration(
                             icon: Icon(
                               Icons.search,
-                              color: Colors.deepOrange,
+                              color: Colors.blueAccent,
                             ),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
@@ -503,7 +503,7 @@ class _HomeState extends State<HomePage> {
                       'Categories',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -531,7 +531,7 @@ class _HomeState extends State<HomePage> {
                       'Brands',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -562,7 +562,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Featured products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -579,7 +579,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Sale products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -594,7 +594,7 @@ class _HomeState extends State<HomePage> {
                       style: TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.blueAccent),
                     ),
                   ),
                   RecentProducts(),
@@ -712,11 +712,11 @@ class _HomeState extends State<HomePage> {
         } else if (constraints.maxWidth > 411 && constraints.maxWidth < 500) {
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
               title: Text(
-                "H M T",
-                style: TextStyle(color: Colors.deepOrange, fontSize: 18.0),
+                "Le Livre",
+                style: TextStyle(color: Colors.blueAccent, fontSize: 18.0),
               ),
               centerTitle: true,
               backgroundColor: Colors.white,
@@ -789,7 +789,7 @@ class _HomeState extends State<HomePage> {
                           decoration: InputDecoration(
                             icon: Icon(
                               Icons.search,
-                              color: Colors.deepOrange,
+                              color: Colors.blueAccent,
                             ),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
@@ -808,7 +808,7 @@ class _HomeState extends State<HomePage> {
                       'Categories',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -836,7 +836,7 @@ class _HomeState extends State<HomePage> {
                       'Brands',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -867,7 +867,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Featured products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -884,7 +884,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Sale products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -899,7 +899,7 @@ class _HomeState extends State<HomePage> {
                       style: TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.blueAccent),
                     ),
                   ),
                   RecentProducts(),
@@ -1014,11 +1014,11 @@ class _HomeState extends State<HomePage> {
         } else if (constraints.maxWidth > 501) {
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
               title: Text(
-                "H M T",
-                style: TextStyle(color: Colors.deepOrange, fontSize: 18.0),
+                "Le Livre",
+                style: TextStyle(color: Colors.blueAccent, fontSize: 18.0),
               ),
               centerTitle: true,
               backgroundColor: Colors.white,
@@ -1091,7 +1091,7 @@ class _HomeState extends State<HomePage> {
                           decoration: InputDecoration(
                             icon: Icon(
                               Icons.search,
-                              color: Colors.deepOrange,
+                              color: Colors.blueAccent,
                             ),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
@@ -1110,7 +1110,7 @@ class _HomeState extends State<HomePage> {
                       'Categories',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -1138,7 +1138,7 @@ class _HomeState extends State<HomePage> {
                       'Brands',
                       style: TextStyle(
                           fontSize: 20.0,
-                          color: Colors.deepOrange,
+                          color: Colors.blueAccent,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -1169,7 +1169,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Featured products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -1186,7 +1186,7 @@ class _HomeState extends State<HomePage> {
                             child: new Text(
                               'Sale products',
                               style: TextStyle(
-                                  color: Colors.deepOrange,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0),
                             )),
@@ -1201,7 +1201,7 @@ class _HomeState extends State<HomePage> {
                       style: TextStyle(
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange),
+                          color: Colors.blueAccent),
                     ),
                   ),
                   RecentProducts(),
@@ -1447,7 +1447,7 @@ class _HomeState extends State<HomePage> {
                       ? Image.network(data["image"])
                       : AvataaarImage(avatar: Avataaar.random())),
               decoration: BoxDecoration(
-                color: Colors.deepOrange,
+                color: Colors.blueAccent,
               ),
             ),
             InkWell(
