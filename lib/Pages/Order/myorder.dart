@@ -27,36 +27,18 @@ class _MyOrderState extends State<MyOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: new AppBar(
+        backgroundColor: Colors.blue,
+        title: Text("My Order"),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.blueAccent,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      }),
-                  Text(
-                    "My Order",
-                    style: TextStyle(
-                        color: Colors.blueAccent,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w800),
-                  ),
-                ],
-              ),
-            ),
             StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("orders").snapshots(),
+                stream:
+                    FirebaseFirestore.instance.collection("orders").snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Text("No products in cart yet!");

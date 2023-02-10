@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../Product/ProductDetails.dart';
 
-
 class ListProductsFavourite extends StatefulWidget {
   final String email;
-  ListProductsFavourite({Key key, @required this.email}) : super(key:key);
+  ListProductsFavourite({Key key, @required this.email}) : super(key: key);
   @override
   ListProductsFavouriteState createState() => ListProductsFavouriteState();
 }
@@ -16,11 +15,13 @@ class ListProductsFavouriteState extends State<ListProductsFavourite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.blueAccent),
+        iconTheme: IconThemeData(color: Colors.white),
         elevation: 0.0,
-        title: Text("List your favourite products", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0),),
+        title: Text(
+          "List your favourite products",
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
       ),
       body: Column(
         children: <Widget>[
@@ -29,16 +30,20 @@ class ListProductsFavouriteState extends State<ListProductsFavourite> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Press icon to unlike ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),),
+                Text(
+                  "Press icon to unlike ",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                ),
               ],
             ),
           ),
           StreamBuilder(
-            stream: FirebaseFirestore.instance.collection("favourite").snapshots(),
-            builder: (context,snapshot){
-              if(!snapshot.hasData){
+            stream:
+                FirebaseFirestore.instance.collection("favourite").snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
                 return Text("No products exist");
-              }else{
+              } else {
                 return ListView(
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -54,53 +59,68 @@ class ListProductsFavouriteState extends State<ListProductsFavourite> {
 
   showListCategories(AsyncSnapshot<QuerySnapshot> snapshot) {
     List<DocumentSnapshot> data = new List();
-    for(DocumentSnapshot document in snapshot.data.docs){
-      if(document["userEmail"] == widget.email){
+    for (DocumentSnapshot document in snapshot.data.docs) {
+      if (document["userEmail"] == widget.email) {
         data.add(document);
-      }else{
+      } else {
         _noProducts();
       }
     }
-    return data.map((DocumentSnapshot document){
+    return data.map((DocumentSnapshot document) {
       return Padding(
-              padding: const EdgeInsets.all(8.0),
-          child: Card(
-            elevation: 10.0,
-            child: ListTile(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductDetails(
-                  id: document["product"]["productId"], category: document["product"]["productCategory"], brand: document["product"]["productBrand"],
-                  description: document["product"]["productDescription"], images: document["product"]["productImages"], price: document["product"]["productPrice"],
-                  colors: document["product"]["productColors"],sizes: document["product"]["productSizes"],
-                  name: document["product"]["productName"],isFavourite: document["isFavourite"],
-                )));
-              },
-              leading: Image.network(document["product"]["productImages"][0]),
-              title: Text(document["product"]["productName"], style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800),),
-              trailing:
-                  IconButton(
-                      icon: Icon(Icons.favorite),
-                      onPressed: (){
-                        FirebaseFirestore.instance.collection("favourite").doc(document["favouriteID"]).delete();
-                      }
-                  ),
-              ),
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 10.0,
+          child: ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ProductDetails(
+                            id: document["product"]["productId"],
+                            category: document["product"]["productCategory"],
+                            brand: document["product"]["productBrand"],
+                            description: document["product"]
+                                ["productDescription"],
+                            images: document["product"]["productImages"],
+                            price: document["product"]["productPrice"],
+                            colors: document["product"]["productColors"],
+                            sizes: document["product"]["productSizes"],
+                            name: document["product"]["productName"],
+                            isFavourite: document["isFavourite"],
+                          )));
+            },
+            leading: Image.network(document["product"]["productImages"][0]),
+            title: Text(
+              document["product"]["productName"],
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800),
             ),
-        );
+            trailing: IconButton(
+                icon: Icon(Icons.favorite),
+                onPressed: () {
+                  FirebaseFirestore.instance
+                      .collection("favourite")
+                      .doc(document["favouriteID"])
+                      .delete();
+                }),
+          ),
+        ),
+      );
     }).toList();
   }
 
-  Widget _noProducts(){
+  Widget _noProducts() {
     return Padding(
-          padding: const EdgeInsets.only(top: 150.0),
-          child: Container(
-            alignment: Alignment.center,
-            child: Center(
-              child: Text("You haven't favourite products yet"),
-            ),
+      padding: const EdgeInsets.only(top: 150.0),
+      child: Container(
+        alignment: Alignment.center,
+        child: Center(
+          child: Text("You haven't favourite products yet"),
         ),
+      ),
     );
   }
 }
-
-

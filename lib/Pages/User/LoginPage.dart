@@ -170,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
             height: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0),
+            padding: const EdgeInsets.all(30),
             child: Container(
               alignment: Alignment.topCenter,
               child: Image.asset(
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
             builder: (context, constraints) {
               if (constraints.maxWidth < 350) {
                 return Padding(
-                  padding: const EdgeInsets.only(top: 160.0),
+                  padding: const EdgeInsets.all(160.0),
                   child: Center(
                     child: Form(
                       key: _formKey,
@@ -409,7 +409,7 @@ class _LoginPageState extends State<LoginPage> {
               } else if (constraints.maxWidth > 351 &&
                   constraints.maxWidth < 410) {
                 return Padding(
-                  padding: const EdgeInsets.only(top: 195.0),
+                  padding: const EdgeInsets.only(top: 240),
                   child: Center(
                     child: Form(
                       key: _formKey,

@@ -321,25 +321,25 @@ class _CheckOutPageState extends State<CheckOutPage> {
         child: ListTile(
           leading: Image.network(doc["products"]["productImage"]),
           title: Text(doc["products"]["productName"],
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.0)),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(doc["products"]["productBrand"],
-                  style: TextStyle(fontSize: 18.0)),
+                  style: TextStyle(fontSize: 14.0)),
               Row(
                 children: <Widget>[
                   Text(doc["products"]["productPrice"].toString(),
-                      style: TextStyle(fontSize: 20.0)),
+                      style: TextStyle(fontSize: 14.0)),
                   SizedBox(
                     width: 5,
                   ),
-                  Text("x", style: TextStyle(fontSize: 18.0)),
+                  Text("x", style: TextStyle(fontSize: 14.0)),
                   SizedBox(
                     width: 5,
                   ),
                   Text(doc["products"]["productQuantity"].toString(),
-                      style: TextStyle(fontSize: 20.0))
+                      style: TextStyle(fontSize: 14.0)),
                 ],
               ),
             ],

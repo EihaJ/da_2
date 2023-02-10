@@ -21,6 +21,7 @@ import '../Pages/List/list_categories.dart';
 import '../Pages/List/list_brands.dart';
 import '../Components/DisplayrecentProducts.dart';
 import 'package:badges/badges.dart';
+import 'User/MyAccount.dart';
 
 class HomePage extends StatefulWidget {
   final User user;
@@ -51,25 +52,25 @@ class _HomeState extends State<HomePage> {
 
   Future<Null> signOut() async {
     // Sign out with firebase
-    await firebaseAuth.signOut();
+    firebaseAuth.signOut();
     // Sign out with google
-    // AuthResult result = await firebaseAuth.signInWithEmailAndPassword(
+    // UserCredential result = await firebaseAuth.signInWithEmailAndPassword(
     //     email: _emailEditingController.text,
     //     password: _passwordEditingController.text
     // );
     // User user = result.user;
-    // FirebaseFirestore.instance.collection("users").doc(user.uid).updateData({
+    // FirebaseFirestore.instance.collection("users").doc(user.uid).update({
     //   "isLoggedIn" : false
     // });
-    await googleSignIn.signOut();
+    // await googleSignIn.signOut();
     //Sign out with Facebook
-    await facebookLogin.logOut();
+    // await facebookLogin.logOut();
     Fluttertoast.showToast(
         msg: "Signed out successfully!",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue,
         textColor: Colors.white,
         fontSize: 16.0);
     Navigator.push(
@@ -106,10 +107,9 @@ class _HomeState extends State<HomePage> {
               elevation: 0.0,
               title: Text(
                 "Le Livre",
-                style: TextStyle(color: Colors.blueAccent, fontSize: 18.0),
               ),
               centerTitle: true,
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue,
               actions: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 15.0),
@@ -407,14 +407,13 @@ class _HomeState extends State<HomePage> {
         } else if (constraints.maxWidth > 351 && constraints.maxWidth < 410) {
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.blueAccent),
+              iconTheme: IconThemeData(color: Colors.white),
               elevation: 0.0,
               title: Text(
-                "Le",
-                style: TextStyle(color: Colors.blueAccent, fontSize: 18.0),
+                "Le Livre",
               ),
               centerTitle: true,
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.blue,
               actions: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 15.0),
@@ -604,104 +603,117 @@ class _HomeState extends State<HomePage> {
             bottomNavigationBar: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Card(
-                    elevation: 10.0,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ListCategories()));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(
-                            Icons.category,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            "Categories",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
+                  Container(
+                    width: 98,
+                    child: Card(
+                      elevation: 10.0,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ListCategories()));
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.category,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              "Categories",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  Card(
-                    elevation: 10.0,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ListBrands()));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(
-                            Icons.label,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            "Brands",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
+                  Container(
+                    width: 98,
+                    child: Card(
+                      elevation: 10.0,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ListBrands()));
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.label,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              "Brands",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  Card(
-                    elevation: 10.0,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ListProductsFavourite(
-                                    email: widget.user.email)));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(
-                            Icons.favorite,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            "Favourite",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
+                  Container(
+                    width: 98,
+                    child: Card(
+                      elevation: 10.0,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ListProductsFavourite(
+                                      email: widget.user.email)));
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              "Favourite",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  Card(
-                    elevation: 10.0,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartPage(
-                                      email: widget.user.email,
-                                    )));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(
-                            Icons.shopping_cart,
-                            color: Colors.black,
-                          ),
-                          Text(
-                            "Cart",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ],
+                  Container(
+                    width: 98,
+                    child: Card(
+                      elevation: 10.0,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CartPage(
+                                        email: widget.user.email,
+                                      )));
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(
+                              Icons.shopping_cart,
+                              color: Colors.black,
+                            ),
+                            Text(
+                              "Cart",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -1452,8 +1464,12 @@ class _HomeState extends State<HomePage> {
             ),
             InkWell(
               onTap: () {
-//            Navigator.push(context,
-//                MaterialPageRoute(builder: (context) => MyAccount(email: widget.email,)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyAccount(
+                              email: widget.user.email,
+                            )));
               },
               child: ListTile(
                 title: Text(
@@ -1462,7 +1478,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 leading: Icon(
                   Icons.account_box,
-                  color: Colors.red,
+                  color: Colors.blue,
                   size: 30,
                 ),
               ),
@@ -1483,7 +1499,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 leading: Icon(
                   Icons.shopping_basket,
-                  color: Colors.red,
+                  color: Colors.blue,
                   size: 30,
                 ),
               ),
@@ -1504,7 +1520,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 leading: Icon(
                   Icons.favorite,
-                  color: Colors.red,
+                  color: Colors.blue,
                   size: 30,
                 ),
               ),
@@ -1525,7 +1541,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 leading: Icon(
                   Icons.shopping_cart,
-                  color: Colors.red,
+                  color: Colors.blue,
                   size: 30,
                 ),
               ),
@@ -1542,7 +1558,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 leading: Icon(
                   Icons.category,
-                  color: Colors.red,
+                  color: Colors.blue,
                   size: 30,
                 ),
               ),
@@ -1559,7 +1575,7 @@ class _HomeState extends State<HomePage> {
                 ),
                 leading: Icon(
                   Icons.label,
-                  color: Colors.red,
+                  color: Colors.blue,
                   size: 30,
                 ),
               ),
@@ -1598,16 +1614,15 @@ class _HomeState extends State<HomePage> {
             ),
             InkWell(
               onTap: () async {
-                //
-                // AuthResult result = await firebaseAuth.signInWithEmail(
-                //     email: data["email"],
+                // UserCredential result = await firebaseAuth.signInWithEmail(
+                //   email: data["email"],
                 // );
                 // User user = result.user;
-                // FirebaseFirestore.instance.collection("users").doc(data["uid"]).updateData({
-                //   "isLoggedIn" : false,
-                //   "role" : "clientt"
-                // });
-                signOut();
+                // FirebaseFirestore.instance
+                //     .collection("users")
+                //     .doc(data["uid"])
+                //     .update({"isLoggedIn": false, "role": "clientt"});
+                // signOut();
               },
               child: ListTile(
                 title: Text(
@@ -1674,7 +1689,7 @@ class DataSearch extends SearchDelegate<String> {
           Center(
             child: Text(
               "Search term must be longer than two letters.",
-              style: TextStyle(color: Colors.red, fontSize: 20.0),
+              style: TextStyle(color: Colors.blue, fontSize: 20.0),
             ),
           )
         ],

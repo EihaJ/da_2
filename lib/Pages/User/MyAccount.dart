@@ -14,13 +14,18 @@ class _MyAccountState extends State<MyAccount> {
     return Scaffold(
       // ignore: unnecessary_new
       appBar: new AppBar(
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.blue,
         title: Text("Account"),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage(email: widget.email,)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CartPage(
+                              email: widget.email,
+                            )));
               }),
         ],
       ),

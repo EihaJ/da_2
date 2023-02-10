@@ -19,22 +19,18 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         elevation: 0.0,
         centerTitle: true,
         title: Text(
           "My Cart",
-          style: TextStyle(
-              color: Colors.blueAccent,
-              fontSize: 20.0,
-              fontWeight: FontWeight.w800),
         ),
         leading: Padding(
             padding: const EdgeInsets.all(4.0),
             child: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios,
-                  color: Colors.blueAccent,
+                  color: Colors.white,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -63,7 +59,8 @@ class _CartPageState extends State<CartPage> {
         child: Row(
           children: <Widget>[
             StreamBuilder(
-                stream: FirebaseFirestore.instance.collection("carts").snapshots(),
+                stream:
+                    FirebaseFirestore.instance.collection("carts").snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Row(
@@ -108,14 +105,14 @@ class _CartPageState extends State<CartPage> {
                                 child: new Text(
                                   "Check out",
                                   style: TextStyle(
-                                      fontSize: 20.0,
+                                      fontSize: 16.0,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
                               subtitle: Text(""),
                             ),
                             elevation: 10.0,
-                            color: Colors.red,
+                            color: Colors.blue,
                           ),
                         ),
                       ],
@@ -243,7 +240,7 @@ class _CartPageState extends State<CartPage> {
                       subtitle: Text(""),
                     ),
                     elevation: 10.0,
-                    color: Colors.red,
+                    color: Colors.blue,
                   ),
                 ),
               ],
@@ -251,7 +248,7 @@ class _CartPageState extends State<CartPage> {
           );
         } else if (constraints.maxWidth > 351 && constraints.maxWidth < 410) {
           return Container(
-            width: 10,
+            width: double.infinity,
             height: 70,
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -264,14 +261,14 @@ class _CartPageState extends State<CartPage> {
                         child: Text(
                           "Total cost",
                           style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.bold),
+                              fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),
                       ),
                       subtitle: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
                           "\$$cost",
-                          style: TextStyle(color: Colors.black, fontSize: 18.0),
+                          style: TextStyle(color: Colors.black, fontSize: 16.0),
                         ),
                       ),
                     ),
@@ -283,24 +280,28 @@ class _CartPageState extends State<CartPage> {
                     child: ListTile(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CheckOutPage(
-                                      email: widget.email,
-                                    )));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CheckOutPage(
+                              email: widget.email,
+                            ),
+                          ),
+                        );
                       },
                       title: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 15, 8, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 15, 0, 0),
                         child: Text(
                           "Check out",
                           style: TextStyle(
-                              fontSize: 18.0, fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                       subtitle: Text(""),
                     ),
                     elevation: 10.0,
-                    color: Colors.red,
+                    color: Colors.blue,
                   ),
                 ),
               ],
@@ -357,7 +358,7 @@ class _CartPageState extends State<CartPage> {
                       subtitle: Text(""),
                     ),
                     elevation: 10.0,
-                    color: Colors.red,
+                    color: Colors.blue,
                   ),
                 ),
               ],
@@ -414,7 +415,7 @@ class _CartPageState extends State<CartPage> {
                       subtitle: Text(""),
                     ),
                     elevation: 10.0,
-                    color: Colors.red,
+                    color: Colors.blue,
                   ),
                 ),
               ],

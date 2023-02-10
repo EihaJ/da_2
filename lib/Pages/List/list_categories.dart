@@ -12,18 +12,20 @@ class _ListCategoriesState extends State<ListCategories> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.blueAccent),
+        iconTheme: IconThemeData(color: Colors.white),
         elevation: 0.0,
-        title: Text("List of Categories", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0),),
+        title: Text(
+          "List of Categories",
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("Categories").snapshots(),
-        builder: (context,snapshot){
-          if(!snapshot.hasData){
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
             return Text("No categories exist");
-          }else{
+          } else {
             return ListView(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -36,21 +38,33 @@ class _ListCategoriesState extends State<ListCategories> {
   }
 
   showListCategories(AsyncSnapshot<QuerySnapshot> snapshot) {
-    return snapshot.data.docs.map((DocumentSnapshot document)=>
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          child: ListTile(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ListProductsInCategory(category: document["categoryName"])));
-            },
-            leading: Image.network(document["categoryImage"], width: 100, height: 100,),
-            title: Text(document["categoryName"], style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800),),
-          ),
-        ),
-      )
-    ).toList();
+    return snapshot.data.docs
+        .map((DocumentSnapshot document) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ListProductsInCategory(
+                                category: document["categoryName"])));
+                  },
+                  leading: Image.network(
+                    document["categoryImage"],
+                    width: 100,
+                    height: 100,
+                  ),
+                  title: Text(
+                    document["categoryName"],
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ),
+            ))
+        .toList();
   }
 }
-
-

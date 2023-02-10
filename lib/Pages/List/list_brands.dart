@@ -12,18 +12,20 @@ class _ListBrandsState extends State<ListBrands> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.blueAccent),
+        iconTheme: IconThemeData(color: Colors.white),
         elevation: 0.0,
-        title: Text("List of Brands", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0),),
+        title: Text(
+          "List of Brands",
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("brands").snapshots(),
-        builder: (context,snapshot){
-          if(!snapshot.hasData){
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
             return Text("No brands exist");
-          }else{
+          } else {
             return ListView(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
@@ -36,24 +38,34 @@ class _ListBrandsState extends State<ListBrands> {
   }
 
   showListBrands(AsyncSnapshot<QuerySnapshot> snapshot) {
-    return snapshot.data.docs.map((DocumentSnapshot document)=>
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            child: ListTile(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ListProductsInBrand(brand: document["brandName"])));
-              },
-              leading: Image.network(document["brandImage"], width: 90, height: 50,),
-              title: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(document["brandName"], style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w800)),
+    return snapshot.data.docs
+        .map((DocumentSnapshot document) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ListProductsInBrand(
+                                brand: document["brandName"])));
+                  },
+                  leading: Image.network(
+                    document["brandImage"],
+                    width: 90,
+                    height: 50,
+                  ),
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(document["brandName"],
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w800)),
+                  ),
+                ),
               ),
-            ),
-          ),
-        )
-    ).toList();
+            ))
+        .toList();
   }
 }
-
-
